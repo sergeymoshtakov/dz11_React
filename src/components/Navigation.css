@@ -1,0 +1,24 @@
+.navigation {
+    margin-bottom: 20px;
+  }
+  
+  .navigation-list {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .navigation-item {
+    display: inline-block;
+    margin-right: 20px;
+  }
+  
+  .navigation-link {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+  }
+  
+  .navigation-link:hover {
+    color: #666;
+  }  

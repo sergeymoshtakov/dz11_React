@@ -1,0 +1,35 @@
+.city-container {
+    margin: 20px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+  
+.city-name {
+    font-size: 24px;
+    font-weight: bold;
+}
+  
+.city-info {
+    margin: 10px;
+    padding: 20px;
+}
+
+.landmarks{
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+}
+  
+.city-landmark {
+    margin: 20px;
+    padding: 20px;
+}
+  
+.city-landmark img {
+    padding: 20px;
+    margin-bottom: 10px;
+    max-height: 200px;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+}
