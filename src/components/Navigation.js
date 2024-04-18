@@ -19,6 +19,12 @@ function Navigation() {
                 <li className="navigation-item">
                     <Link to="/Book" className="navigation-link">My favourite book</Link>
                 </li>
+                <li className="navigation-item">
+                    <Link to="/Less3" className="navigation-link">Users</Link>
+                </li>
+                <li className="navigation-item">
+                    <Link to="/TextRedactor" className="navigation-link">Text redactor</Link>
+                </li>
             </ul>
         </nav>
     </div>
