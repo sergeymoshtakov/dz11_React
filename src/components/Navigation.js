@@ -25,6 +25,15 @@ function Navigation() {
                 <li className="navigation-item">
                     <Link to="/TextRedactor" className="navigation-link">Text redactor</Link>
                 </li>
+                <li className="navigation-item">
+                    <Link to="/Less4" className="navigation-link">Less 4</Link>
+                </li>
+                <li className="navigation-item">
+                    <Link to="/CommentSystem" className="navigation-link">Comment System</Link>
+                </li>
+                <li className="navigation-item">
+                    <Link to="/ClickCounter" className="navigation-link">Click Counter</Link>
+                </li>
             </ul>
         </nav>
     </div>
