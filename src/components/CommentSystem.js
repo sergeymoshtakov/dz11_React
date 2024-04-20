@@ -8,8 +8,12 @@ class CommentSystem extends Component {
       name: '',
       comment: '',
       comments: [],
-      nameError: '',
-      commentError: ''
+      validation: {
+        nameRegex: /^[a-zA-Z\s]{6,20}$/,
+        commentRegex: /^.{1,100}$/,
+        nameError: '',
+        commentError: ''
+      }
     };
   }
 
@@ -28,44 +32,45 @@ class CommentSystem extends Component {
 
   validateInputs = () => {
     let isValid = true;
-    const { name, comment } = this.state;
-    if (!name.trim()) {
-      this.setState({ nameError: 'Please enter your name' });
+    const { name, comment, validation } = this.state;
+    const { nameRegex, commentRegex } = validation;
+
+    if (!nameRegex.test(name)) {
+      this.setState({ validation: { ...validation, nameError: 'Name must be 6 to 20 characters long and contain only letters and spaces' } });
       isValid = false;
     } else {
-      this.setState({ nameError: '' });
+      this.setState({ validation: { ...validation, nameError: '' } });
     }
-    if (!comment.trim()) {
-      this.setState({ commentError: 'Please enter your comment' });
+
+    if (!commentRegex.test(comment)) {
+      this.setState({ validation: { ...validation, commentError: 'Comment must be 1 to 100 characters long' } });
       isValid = false;
     } else {
-      this.setState({ commentError: '' });
+      this.setState({ validation: { ...validation, commentError: '' } });
     }
+
     return isValid;
   };
 
   handleNameChange = (e) => {
     const name = e.target.value;
-    this.setState({ name });
-    if (!name.trim()) {
-      this.setState({ nameError: 'Please enter your name' });
-    } else {
-      this.setState({ nameError: '' });
-    }
+    this.setState(prevState => ({
+      name,
+      validation: { ...prevState.validation, nameError: !prevState.validation.nameRegex.test(name) ? 'Name must be 6 to 20 characters long and contain only letters and spaces' : '' }
+    }));
   };
 
   handleCommentChange = (e) => {
     const comment = e.target.value;
-    this.setState({ comment });
-    if (!comment.trim()) {
-      this.setState({ commentError: 'Please enter your comment' });
-    } else {
-      this.setState({ commentError: '' });
-    }
+    this.setState(prevState => ({
+      comment,
+      validation: { ...prevState.validation, commentError: !prevState.validation.commentRegex.test(comment) ? 'Comment must be 1 to 100 characters long' : '' }
+    }));
   };
 
   render() {
-    const { name, comment, comments, nameError, commentError } = this.state;
+    const { name, comment, comments, validation } = this.state;
+    const { nameError, commentError } = validation;
     return (
       <div>
         <h2>Comment System</h2>
@@ -76,7 +81,7 @@ class CommentSystem extends Component {
               type="text"
               id="name"
               value={name}
-              onInput={this.handleNameChange}
+              onChange={this.handleNameChange}
               className={nameError ? 'error' : ''}
             />
             {nameError && <span className="error-message">{nameError}</span>}
@@ -86,7 +91,7 @@ class CommentSystem extends Component {
             <textarea
               id="comment"
               value={comment}
-              onInput={this.handleCommentChange}
+              onChange={this.handleCommentChange}
               className={commentError ? 'error' : ''}
             ></textarea>
             {commentError && <span className="error-message">{commentError}</span>}
