@@ -21,7 +21,7 @@ function App() {
   };
 
   return (
-    <div className={`App ${isDarkTheme ? 'dark-theme' : ''}`}>
+    <div className={`* ${isDarkTheme ? 'dark-theme' : ''}`}>
       <Router>
         <ThemeToggle onThemeChange={handleThemeChange} />
         <Navigation/>
