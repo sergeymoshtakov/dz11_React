@@ -4,16 +4,24 @@ import CounterDisplay from './CounterDisplay';
 function ClickCounter() {
   const [count, setCount] = useState(0);
 
+  const buttons = [
+    { label: '+1', incrementBy: 1 },
+    { label: '+10', incrementBy: 10 },
+    { label: '-100', incrementBy: -100 },
+    { label: '+25', incrementBy: 25 },
+  ];
+
   const incrementCount = (incrementBy) => {
     setCount(count + incrementBy);
   };
 
   return (
     <div>
-      <button onClick={() => incrementCount(1)}>+1</button>
-      <button onClick={() => incrementCount(10)}>+10</button>
-      <button onClick={() => incrementCount(-100)}>-100</button>
-      <button onClick={() => incrementCount(25)}>+25</button>
+      {buttons.map((button, index) => (
+        <button key={index} onClick={() => incrementCount(button.incrementBy)}>
+          {button.label}
+        </button>
+      ))}
       <CounterDisplay count={count} />
     </div>
   );
